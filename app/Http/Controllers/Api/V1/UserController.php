@@ -61,7 +61,7 @@ class UserController extends ApiController
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        // PATCH
+
     }
 
     /**
