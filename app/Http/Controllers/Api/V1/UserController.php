@@ -38,7 +38,7 @@ class UserController extends ApiController
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $user) : UserResource
     {
         if ($this->include('projects')){
             $user->load('projects');
@@ -61,7 +61,7 @@ class UserController extends ApiController
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        // PATCH
     }
 
     /**
