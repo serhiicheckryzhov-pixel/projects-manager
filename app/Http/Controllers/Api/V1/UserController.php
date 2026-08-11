@@ -14,21 +14,24 @@ class UserController extends ApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(UserFilter $filters) {
+    public function index(UserFilter $filters)
+    {
         return UserResource::collection(User::filter($filters)->paginate());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()  {
+    public function create()
+    {
         //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request) {
+    public function store(StoreUserRequest $request)
+    {
         //
     }
 
