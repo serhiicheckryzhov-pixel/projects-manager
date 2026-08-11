@@ -21,8 +21,7 @@ class ProjectController extends Controller
         return view('admin.projects.index', compact('projects'));
     }
 
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
         return view('admin.projects.create');
     }
 
