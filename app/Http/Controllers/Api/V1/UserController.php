@@ -22,8 +22,7 @@ class UserController extends ApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
+    public function create()     {
         //
     }
 
@@ -37,10 +36,13 @@ class UserController extends ApiController
 
     /**
      * Display the specified resource.
+     *
+     * @param User $user
+     * @return UserResource
      */
     public function show(User $user) : UserResource
     {
-        if ($this->include('projects')){
+        if ($this->include('projects')) {
             $user->load('projects');
             //return UserResource::collection(User::with(['projects']));
         }
