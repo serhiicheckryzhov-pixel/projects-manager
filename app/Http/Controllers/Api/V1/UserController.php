@@ -22,7 +22,7 @@ class UserController extends ApiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()     {
+    public function create()  {
         //
     }
 
