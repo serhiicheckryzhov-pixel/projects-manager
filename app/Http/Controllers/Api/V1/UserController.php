@@ -29,8 +29,7 @@ class UserController extends ApiController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request)
-    {
+    public function store(StoreUserRequest $request) {
         //
     }
 
