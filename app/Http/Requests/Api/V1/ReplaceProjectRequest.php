@@ -22,7 +22,7 @@ class ReplaceProjectRequest extends BaseProjectRequest
             'data.attributes.name' => 'required|string|max:255|min:3',
             'data.attributes.description' => 'nullable|string|max:255|min:3',
             'data.attributes.created_by' => 'required|exists:users,id',
-            'data.attributes.related_to' => 'nullable|exists:users,id'
+            'data.attributes.related_to' => 'nullable|exists:users,id',
         ];
     }
 }

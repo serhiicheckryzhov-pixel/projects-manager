@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProjectRequest extends BaseProjectRequest
 {
@@ -27,7 +26,7 @@ class UpdateProjectRequest extends BaseProjectRequest
             'data.attributes.name' => 'required|string|max:255|min:3',
             'data.attributes.description' => 'sometimes|string|max:255|min:3',
             'data.attributes.created_by' => 'exists:users,id',
-            'data.attributes.related_to' => 'sometimes|exists:users,id'
+            'data.attributes.related_to' => 'sometimes|exists:users,id',
         ];
 
         if ($this->user()->tokenCan('project:own:update')) {

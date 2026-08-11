@@ -7,9 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectResource extends JsonResource
 {
-
-
-    //public static $wrap = 'project';
+    // public static $wrap = 'project';
     /**
      * Transform the resource into an array.
      *
@@ -17,28 +15,28 @@ class ProjectResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        //return parent::toArray($request);
+        // return parent::toArray($request);
 
         return [
             'type' => 'project',
-            'id'   => $this->id,
+            'id' => $this->id,
             'includes' => new UserResource($this->whenLoaded('creator')),
             'attributes' => [
                 'name' => $this->name,
                 'description' => $this->when($request->routeIs('projects.show'), $this->description),
-                //'status' => $this->status
+                // 'status' => $this->status
             ],
             'relationships' => [
                 'author' => [
                     'data' => [
                         'type' => 'user',
-                        'id' => $this->user_id
-                    ]
-                ]
+                        'id' => $this->user_id,
+                    ],
+                ],
             ],
             'links' => [
-                'self' => route('projects.show', ['project' => $this->id])
-            ]
+                'self' => route('projects.show', ['project' => $this->id]),
+            ],
         ];
     }
 }

@@ -18,6 +18,7 @@ class ProjectController extends Controller
     public function index(): View
     {
         $projects = Project::with(['creator', 'userRelatedTo'])->where('status', ProjectStatus::Active)->latest()->paginate(15);
+
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -34,6 +35,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         Project::create([...$request->validated(), 'created_by' => Auth::user()->id]);
+
         return redirect()
             ->route('projects.index')
             ->with('success', 'Data created successfully.');

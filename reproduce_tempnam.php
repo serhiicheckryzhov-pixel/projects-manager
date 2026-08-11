@@ -1,4 +1,5 @@
 <?php
+
 $dir = '/var/www/html/storage/framework/views';
 $temp = tempnam($dir, 'test');
 echo "Temp file: $temp\n";

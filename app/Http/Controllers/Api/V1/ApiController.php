@@ -10,12 +10,12 @@ class ApiController extends Controller
 {
     use ApiResponses, AuthorizesRequests;
 
-
-    public function include(string $relationship): bool {
+    public function include(string $relationship): bool
+    {
         $param = request()->get('include');
 
-        if (!isset($param)){
-           return false;
+        if (! isset($param)) {
+            return false;
         }
 
         $includeValues = explode(',', mb_strtolower($param));

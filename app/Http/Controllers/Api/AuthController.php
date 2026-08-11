@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\ApiLoginRequest;
 use App\Http\Requests\Api\LoginUserRequest;
-use App\Models\User;
 use App\Permissions\V1\Abilities;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
@@ -18,7 +16,7 @@ class AuthController extends Controller
     public function login(LoginUserRequest $request)
     {
         $request->validated();
-        if (!Auth::attempt($request->only('email', 'password'))) {
+        if (! Auth::attempt($request->only('email', 'password'))) {
             return $this->error('Invalid credentials', 401);
         }
 
@@ -27,7 +25,7 @@ class AuthController extends Controller
         return $this->ok(
             'Authenticated',
             [
-                'token' => $user->createToken('API token for ' . $user->email, Abilities::getAbilities($user), now()->addMonth())->plainTextToken,
+                'token' => $user->createToken('API token for '.$user->email, Abilities::getAbilities($user), now()->addMonth())->plainTextToken,
                 Abilities::getAbilities($user),
                 'user' => $user,
 
@@ -43,6 +41,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
+
         return $this->ok('Logout');
     }
 }
