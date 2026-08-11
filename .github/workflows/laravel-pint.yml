@@ -2,25 +2,29 @@ name: Laravel pint
 
 on:
   pull_request:
-      types:
-        - closed
+    branches:
+      - master
 jobs:
   laravel-pint:
-        runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
   steps:
     - name: Checkout code
-      uses: actions/checkout@v7
+      uses: actions/checkout@v4
+
     - name: Setup PHP and Composer
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
         coverage: none
         tools: composer:v2
+
     - name: Install laravell pint
       run: composer global require laravel/pint
+
     - name: Run Pint
       run: pint --test
+
     - name: Push changes back to repo
       run: ECHO "@TODO"
 
