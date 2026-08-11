@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Filters\V1\ProjectFilter;
 use App\Http\Requests\Api\V1\ReplaceProjectRequest;
 use App\Http\Resources\V1\ProjectResource;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 
 class UserProjectsController extends ApiController
 {
@@ -18,7 +16,7 @@ class UserProjectsController extends ApiController
         return ProjectResource::collection(Project::where('created_by', $user_id)->filter($filters)->paginate());
     }
 
-    public function destroy(int $user_id, int $project_id) : \Illuminate\Http\JsonResponse
+    public function destroy(int $user_id, int $project_id): JsonResponse
     {
         try {
             $project = Project::findOrFail($project_id);
@@ -28,7 +26,6 @@ class UserProjectsController extends ApiController
             } else {
                 return $this->error('Project not found for this particular user', 404);
             }
-
 
         } catch (ModelNotFoundException $e) {
             return $this->error('Project not found', 404);
@@ -49,14 +46,12 @@ class UserProjectsController extends ApiController
                 return $this->error('Project not found for this particular user', 404);
             }
 
-
             return (new ProjectResource($project))
                 ->response()
                 ->setStatusCode(200);
 
-        } catch(ModelNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
             return $this->error('Project not found', 404);
         }
     }
 }
-

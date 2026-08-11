@@ -4,12 +4,11 @@ namespace App\Providers;
 
 use App\Models\Project;
 use App\Policies\V1\ProjectPolicy;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
-
     protected $policies = [
         Project::class => ProjectPolicy::class,
     ];
@@ -17,9 +16,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-    }
+    public function register(): void {}
 
     /**
      * Bootstrap any application services.

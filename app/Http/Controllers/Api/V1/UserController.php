@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Filters\V1\UserFilter;
 use App\Http\Requests\Api\V1\StoreUserRequest;
 use App\Http\Requests\Api\V1\UpdateUserRequest;
@@ -37,15 +36,12 @@ class UserController extends ApiController
 
     /**
      * Display the specified resource.
-     *
-     * @param User $user
-     * @return UserResource
      */
-    public function show(User $user) : UserResource
+    public function show(User $user): UserResource
     {
         if ($this->include('projects')) {
             $user->load('projects');
-            //return UserResource::collection(User::with(['projects']));
+            // return UserResource::collection(User::with(['projects']));
         }
 
         return new UserResource($user);
@@ -54,17 +50,15 @@ class UserController extends ApiController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user) {
+    public function edit(User $user)
+    {
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
-    {
-
-    }
+    public function update(UpdateUserRequest $request, User $user) {}
 
     /**
      * Remove the specified resource from storage.

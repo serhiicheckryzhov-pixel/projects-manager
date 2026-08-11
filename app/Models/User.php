@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Http\Filters\V1\ProjectFilter;
 use App\Http\Filters\V1\UserFilter;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -20,7 +19,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * Get the attributes that should be cast.
@@ -35,7 +34,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function projects(): hasMany
+    public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'created_by');
     }

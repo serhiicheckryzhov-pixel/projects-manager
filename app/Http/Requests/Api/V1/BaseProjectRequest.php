@@ -12,7 +12,7 @@ class BaseProjectRequest extends FormRequest
             'data.attributes.name' => 'name',
             'data.attributes.description' => 'description',
             'data.attributes.created_by' => 'created_by',
-            'data.attributes.related_to' => 'related_to'
+            'data.attributes.related_to' => 'related_to',
         ];
         $attributesToUpdate = [];
 

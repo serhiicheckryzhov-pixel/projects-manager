@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Enums;
 
 enum ProjectStatus: string
@@ -8,7 +9,7 @@ enum ProjectStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::Active => 'Active',
             self::Archived => 'Archived',
         };

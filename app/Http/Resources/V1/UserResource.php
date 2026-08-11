@@ -16,7 +16,7 @@ class UserResource extends JsonResource
     {
         return [
             'type' => 'user',
-            'id'   => $this->id,
+            'id' => $this->id,
             'attributes' => [
                 'name' => $this->name,
                 'email' => $this->email,
@@ -26,8 +26,8 @@ class UserResource extends JsonResource
             ],
             'includes' => ProjectResource::collection($this->whenLoaded('projects')),
             'links' => [
-                'self' => route('users.show', ['user' => $this->id])
-            ]
+                'self' => route('users.show', ['user' => $this->id]),
+            ],
         ];
     }
 }

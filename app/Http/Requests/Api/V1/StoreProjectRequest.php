@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProjectRequest extends BaseProjectRequest
 {
@@ -26,7 +25,7 @@ class StoreProjectRequest extends BaseProjectRequest
             'data.attributes.name' => 'required|string|max:255|min:3',
             'data.attributes.description' => 'nullable|string|max:255|min:3',
             'data.attributes.created_by' => 'required|exists:users,id',
-            'data.attributes.related_to' => 'nullable|exists:users,id'
+            'data.attributes.related_to' => 'nullable|exists:users,id',
         ];
     }
 }
