@@ -14,8 +14,7 @@ class UserController extends ApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(UserFilter $filters)
-    {
+    public function index(UserFilter $filters) {
         return UserResource::collection(User::filter($filters)->paginate());
     }
 
