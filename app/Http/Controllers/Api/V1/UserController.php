@@ -53,8 +53,7 @@ class UserController extends ApiController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
-    {
+    public function edit(User $user) {
         //
     }
 
